@@ -52,13 +52,13 @@ func brainfuck(in []byte) []uint8 {
 			memStack[ptr] = in[i]
 		case '>':
 			ptr++
-			if ptr > len(memStack) {
-				panic("stackoverflow")
+			if ptr >= stackSize {
+				ptr = ptr - stackSize
 			}
 		case '<':
 			ptr--
 			if ptr < 0 {
-				panic("stackoverflow")
+				ptr = ptr + stackSize
 			}
 		case '+':
 			memStack[ptr] = memStack[ptr] + 1
