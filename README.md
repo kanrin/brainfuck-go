@@ -3,8 +3,9 @@
 # Build
 - install go 1.21
 - install make
+- install git
 ```shell
-clone -b main https://github.com/kanrin/brainfuck-go.git
+git clone -b main https://github.com/kanrin/brainfuck-go.git
 cd brainfuck-go
 make build
 ```
