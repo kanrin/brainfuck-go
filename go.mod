@@ -1,3 +1,3 @@
-module bf_jit
+module brainfuck_go
 
 go 1.21.1
