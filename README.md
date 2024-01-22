@@ -16,7 +16,7 @@ cat helloworld.bf | ./bf
 cat helloworld.bf | bf
 # you can run with debug mode, at least print all stack
 cat helloworld.bf | bf -d
-# if you want more member stack(default is 128), can use -s
+# if you want more memory stack(default is 128), can use -s
 cat helloworld.bf | bf -s 65535
 ```
 
