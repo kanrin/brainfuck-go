@@ -18,6 +18,8 @@ cat helloworld.bf | bf
 cat helloworld.bf | bf -d
 # if you want more memory stack(default is 128), can use -s
 cat helloworld.bf | bf -s 65535
+# we can run it directly using the command line
+./bf -f helloworld.bf
 ```
 
-# GoodLuck!
+# Enjoy it! GoodLuck!
