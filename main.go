@@ -36,8 +36,8 @@ func (q *Stack) Pop() int {
 	return item
 }
 
-func brainfuck(in []byte) []uint8 {
-	memStack := make([]uint8, stackSize)
+func brainfuck(in []byte) []byte {
+	memStack := make([]byte, stackSize)
 	loopStack := new(Stack)
 	ptr := 0
 	for i := 0; i < len(in); i++ {
