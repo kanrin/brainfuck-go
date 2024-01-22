@@ -9,8 +9,10 @@ import (
 
 var debug bool
 var stackSize int
+var file string
 
 func init() {
+	flag.StringVar(&file, "f", "", "input file")
 	flag.BoolVar(&debug, "d", false, "open debug mode")
 	flag.IntVar(&stackSize, "s", 128, "set run stack size")
 	flag.Parse()
@@ -87,7 +89,13 @@ func brainfuck(in []byte) []byte {
 }
 
 func main() {
-	in, err := io.ReadAll(os.Stdin)
+	var in []byte
+	var err error
+	if file == "" {
+		in, err = io.ReadAll(os.Stdin)
+	} else {
+		in, err = os.ReadFile(file)
+	}
 	if err != nil {
 		panic(err)
 	}
