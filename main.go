@@ -13,8 +13,8 @@ var file string
 
 func init() {
 	flag.StringVar(&file, "f", "", "input file")
-	flag.BoolVar(&debug, "d", false, "open debug mode")
-	flag.IntVar(&stackSize, "s", 128, "set run stack size")
+	flag.BoolVar(&debug, "d", false, "debug mode")
+	flag.IntVar(&stackSize, "s", 128, "run stack size")
 	flag.Parse()
 }
 

@@ -19,7 +19,17 @@ cat helloworld.bf | bf -d
 # if you want more memory stack(default is 128), can use -s
 cat helloworld.bf | bf -s 65535
 # we can run it directly using the command line
+# command line first
 ./bf -f helloworld.bf
+```
+# Command args
+```shell
+Usage of ./bf:
+-d	debug mode
+-f string
+input file
+-s int
+run stack size (default 128)
 ```
 
 # Enjoy it! GoodLuck!
