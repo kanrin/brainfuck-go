@@ -2,18 +2,15 @@ package main
 
 import (
 	"flag"
-	"fmt"
 	"io"
 	"os"
 )
 
-var debug bool
 var stackSize int
 var file string
 
 func init() {
 	flag.StringVar(&file, "f", "", "input file")
-	flag.BoolVar(&debug, "d", false, "debug mode")
 	flag.IntVar(&stackSize, "s", 128, "run stack size")
 	flag.Parse()
 }
@@ -45,7 +42,7 @@ func brainfuck(in []byte) []byte {
 	for i := 0; i < len(in); i++ {
 		switch in[i] {
 		case '.':
-			fmt.Printf("%s", string(memStack[ptr]))
+			print(string(memStack[ptr]))
 		case ',':
 			i++
 			if i >= len(in) {
@@ -84,7 +81,7 @@ func brainfuck(in []byte) []byte {
 		default:
 		}
 	}
-	fmt.Println("")
+	println("")
 	return memStack
 }
 
@@ -99,8 +96,5 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	out := brainfuck(in)
-	if debug {
-		fmt.Println(out)
-	}
+	brainfuck(in)
 }
