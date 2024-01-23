@@ -2,16 +2,19 @@ package main
 
 import (
 	"flag"
+	"fmt"
 	"io"
 	"os"
 )
 
 var stackSize int
 var file string
+var debug bool
 
 func init() {
 	flag.StringVar(&file, "f", "", "input file")
-	flag.IntVar(&stackSize, "s", 128, "run stack size")
+	flag.IntVar(&stackSize, "s", 32, "run stack size")
+	flag.BoolVar(&debug, "d", false, "print debug info")
 	flag.Parse()
 }
 
@@ -69,15 +72,15 @@ func brainfuck(in []byte) []byte {
 					i++
 				}
 				i++
-			} else {
-				loopStack.Push(i)
+				continue
 			}
+			loopStack.Push(i)
 		case ']':
 			if memStack[ptr] != 0 {
 				i = loopStack.Pop() - 1
-			} else {
-				loopStack.Pop()
+				continue
 			}
+			loopStack.Pop()
 		default:
 		}
 	}
@@ -85,16 +88,20 @@ func brainfuck(in []byte) []byte {
 	return memStack
 }
 
-func main() {
-	var in []byte
-	var err error
+func inputData() ([]byte, error) {
 	if file == "" {
-		in, err = io.ReadAll(os.Stdin)
-	} else {
-		in, err = os.ReadFile(file)
+		return io.ReadAll(os.Stdin)
 	}
+	return os.ReadFile(file)
+}
+
+func main() {
+	in, err := inputData()
 	if err != nil {
 		panic(err)
 	}
-	brainfuck(in)
+	out := brainfuck(in)
+	if debug {
+		fmt.Printf("%v", out)
+	}
 }
