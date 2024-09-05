@@ -32,4 +32,4 @@ Usage of ./bf:
 -s int     run stack size (default 128)
 ```
 
-# Enjoy it! GoodLuck!
+# GoodLuck!
