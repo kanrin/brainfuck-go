@@ -84,7 +84,7 @@ func brainfuck(in []byte) []byte {
 		default:
 		}
 	}
-	println("")
+	print("\n")
 	return memStack
 }
 
